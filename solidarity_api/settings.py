@@ -25,9 +25,9 @@ SECRET_KEY = "!1gd4rt1vl&!ubr%@gkfg!11_1_v7xd3(gttlm4^rpfgqnp@r6"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["solidarityapp.co", "localhost"]
 
-
+CORS_ORIGIN_ALLOW_ALL = True
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,12 +37,14 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "corsheaders",
     "rest_framework",
     "rest_framework.authtoken",
     "solidarity",
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -120,7 +122,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-
+STATIC_ROOT = '/home/api/solidarity_api/static/'
 STATIC_URL = "/static/"
 
 AUTH_USER_MODEL = "solidarity.BaseUser"
